@@ -7,7 +7,7 @@ import simplejson
 
 ROUTER_IP = "192.168.1.1"
 ROUTER_USER = "1234"
-ROUTER_PASSWORD = "kit2707885"
+ROUTER_PASSWORD = "password"
 
 POSITIONS = {
     "ETH0.3_B_RCVD": 16,

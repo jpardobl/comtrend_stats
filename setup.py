@@ -24,7 +24,7 @@ setup(
       "requests==2.1.0",
       "simplejson==3.3.1",
     ),
-    test_suite='contrend_stats.tests.main',
+    test_suite='comtrend_stats.tests.main',
     #tests_require=("selenium", "requests"),
     classifiers=[
         'Environment :: Home Automation',

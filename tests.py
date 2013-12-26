@@ -3,4 +3,10 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-print(read())
+
+def main():
+    print(read())
+
+
+if __name__ == "__main__":
+    main()
