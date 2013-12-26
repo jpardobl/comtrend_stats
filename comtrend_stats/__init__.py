@@ -1,13 +1,9 @@
 import requests
-import os
+import os, sys
 import logging
 from BeautifulSoup import BeautifulSoup
 import simplejson
 
-
-ROUTER_IP = "192.168.1.1"
-ROUTER_USER = "1234"
-ROUTER_PASSWORD = "password"
 
 POSITIONS = {
     "ETH0.3_B_RCVD": 16,
@@ -41,10 +37,10 @@ POSITIONS = {
 }
 
 
-def read():
-    url = os.path.join("http://%s" % ROUTER_IP, "statswan.cmd")
+def read(router_ip, router_user, router_pass):
+    url = os.path.join("http://%s" % router_ip, "statswan.cmd")
     logging.debug("Connecting to %s" % url)
-    response = requests.get(url, auth=(ROUTER_USER, ROUTER_PASSWORD, ))
+    response = requests.get(url, auth=(router_user, router_pass, ))
     if response.status_code != 200:
         logging.error("Cannot retrieve data, status_code: %d; response: \n%s" %
             (response.status_code, response.text))
@@ -63,7 +59,10 @@ def read():
 
 
 if __name__ == "__main__":
-    ret = read()
+    if len(sys.argv) != 4:
+        logging.error("Not enough arguments, need: router_ip, router_user, router_password")
+        exit(1)
+    ret = read(sys.argv[1], sys.argv[2], sys.argv[3])
     if ret is None:
         exit(1)
     print ret
