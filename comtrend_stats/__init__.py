@@ -2,7 +2,6 @@ import requests
 import os, sys
 import logging
 from BeautifulSoup import BeautifulSoup
-import simplejson
 
 
 POSITIONS = {
@@ -55,7 +54,7 @@ def read(router_ip, router_user, router_pass):
         logging.debug("Collecting k: %s , val: %d" % (k, v))
         ret[k] = int(tds[POSITIONS[k]].contents[0])
 
-    return simplejson.dumps(ret)
+    return ret
 
 
 def command_line():
@@ -65,7 +64,10 @@ def command_line():
     ret = read(sys.argv[1], sys.argv[2], sys.argv[3])
     if ret is None:
         exit(1)
-    print ret
+    out = ""
+    for f, v in ret.items():
+        out = "%s%s:%d " % (out, f, v)
+    print out
     exit(0)
 
 if __name__ == "__main__":
