@@ -37,7 +37,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "read_stats = comtrend_stats:read",
+            "read_stats = comtrend_stats:command_line",
         ],
 
     }

@@ -58,7 +58,7 @@ def read(router_ip, router_user, router_pass):
     return simplejson.dumps(ret)
 
 
-if __name__ == "__main__":
+def command_line():
     if len(sys.argv) != 4:
         logging.error("Not enough arguments, need: router_ip, router_user, router_password")
         exit(1)
@@ -67,3 +67,6 @@ if __name__ == "__main__":
         exit(1)
     print ret
     exit(0)
+
+if __name__ == "__main__":
+    command_line()
