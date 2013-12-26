@@ -7,7 +7,7 @@ import simplejson
 
 ROUTER_IP = "192.168.1.1"
 ROUTER_USER = "1234"
-ROUTER_PASSWORD = "ratilla160776"
+ROUTER_PASSWORD = "kit2707885"
 
 POSITIONS = {
     "ETH0.3_B_RCVD": 16,
@@ -45,6 +45,10 @@ def read():
     url = os.path.join("http://%s" % ROUTER_IP, "statswan.cmd")
     logging.debug("Connecting to %s" % url)
     response = requests.get(url, auth=(ROUTER_USER, ROUTER_PASSWORD, ))
+    if response.status_code != 200:
+        logging.error("Cannot retrieve data, status_code: %d; response: \n%s" %
+            (response.status_code, response.text))
+        return None
     soup = BeautifulSoup(response.text)
     logging.debug("Router Response:\n%s\n" % soup)
     tds = soup.findAll("td")
@@ -58,6 +62,9 @@ def read():
     return simplejson.dumps(ret)
 
 
-
-
-
+if __name__ == "__main__":
+    ret = read()
+    if ret is None:
+        exit(1)
+    print ret
+    exit(0)
