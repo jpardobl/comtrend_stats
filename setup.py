@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='comtrend_stats',
     version='0.1',
-    packages=['contrend_stats'],
+    packages=['comtrend_stats'],
     include_package_data=True,
     license='BSD License',
     description='Command to retrieve Comtrend Stats, as the router P401-402TLF-C04_R05 does not have SNMP',
