@@ -36,8 +36,8 @@ setup(
         'Programming Language :: Python :: 2.7',
     ],
     entry_points={
-        "stats": [
-            "read = comtrend.read",
+        "console_scripts": [
+            "read_stats = comtrend_stats:read",
         ],
 
     }
